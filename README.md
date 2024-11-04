@@ -5,7 +5,10 @@ This project is an API using NextJS with Typescript on a MangoDB database. Every
 To launch the project on your local network, follow the next steps.
 
 ## How to start the project
-Start container : `docker compose up --build -d`  
+First, create .env `cp .env.dist .env`  
+Then, start container : `docker compose up --build -d`  
+
+## Commands
 Enter app container : `docker compose exec app sh`  
 Exit container : `exit`
 
