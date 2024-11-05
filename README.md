@@ -12,12 +12,14 @@ When started, you can see your page [here](http://localhost:3000/)
 You can see your db content with prisma studio : `npx prisma studio`
 
 ## Commands
-Tag (_in container app_) means you have to enter in app container before doing the command.
+
 - Enter app container : `docker compose exec app sh`  
 - Exit container : `exit`  
-- Push db schema (_in container app_) : `npx prisma db push`
-- Generate prisma client (_in container app_) : `npx prisma generate`
-- Seeding (_in container app_) : `npm run seed`
+
+The following commands needs to be run _in container app_
+- Push db schema : `npx prisma db push`
+- Generate prisma client : `npx prisma generate`
+- Seeding : `npm run seed`
 - Prisma studio : `npx prisma studio`
 
 ## How to use the API
@@ -35,7 +37,7 @@ If I have enough time, I will add pipelines documentation here.
 - - Dockerfile needs install of prisma globally in it
 - - Dockerfile needs prisma generate
 - `npm install prisma typescript ts-node @types/node esbuild --save-dev`
-- Put this in script : 
+- Put this in script (see more [here](https://github.com/prisma/prisma/issues/7053)) : 
 ```json
 {
   "scripts": {

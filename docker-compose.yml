@@ -8,7 +8,8 @@ services:
     volumes:
       - ./:/app
     ports:
-      - "3000:3000"
+      - "3000:3000" #app
+      - "5555:5555" #Prisma studio
     environment:
       - DATABASE_URL=mongodb://mongo:27017/total_recall_api
     depends_on:
