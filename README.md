@@ -12,7 +12,6 @@ When started, you can see your page [here](http://localhost:3000/)
 You can see your db content with prisma studio : `npx prisma studio`
 
 ## Commands
-
 - Enter in app container : `docker compose exec app sh`
 - Enter mongo shell : `docker compose exec mongo mongosh`
 - Exit container : `exit`
@@ -28,6 +27,15 @@ The following commands needs to be run **_in mongo shell_** :
 
 - Enable replica : `rs.initiate();`
 - Verify replica status : `rs.status();`
+- If rs.conf() not valid : 
+```js
+rs.reconfig({
+  _id: 'rs0',
+  members: [
+    { _id: 0, host: 'mongo:27017' }
+  ]
+}, { force: true });
+```
 
 ## How to use the API
 TODO : Swagger
