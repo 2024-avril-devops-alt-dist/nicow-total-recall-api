@@ -52,3 +52,7 @@ If I have enough time, I will add pipelines documentation here.
   }
 }
 ```
+- Push schema to db
+- Generate prisma client (refresh)
+- Enable replica in mongo shell
+- Push seed & see the result on prisma studio !
