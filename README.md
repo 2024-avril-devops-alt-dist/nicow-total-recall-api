@@ -27,7 +27,7 @@ The following commands needs to be run **_in mongo shell_** :
 
 - Enable replica : `rs.initiate();`
 - Verify replica status : `rs.status();`
-- If rs.conf() not valid : 
+- If rs.conf() not valid : _(**TODO :** make a script for that later)_
 ```js
 rs.reconfig({
   _id: 'rs0',
