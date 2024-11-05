@@ -13,14 +13,21 @@ You can see your db content with prisma studio : `npx prisma studio`
 
 ## Commands
 
-- Enter app container : `docker compose exec app sh`  
-- Exit container : `exit`  
+- Enter in app container : `docker compose exec app sh`
+- Enter mongo shell : `docker compose exec mongo mongosh`
+- Exit container : `exit`
 
-The following commands needs to be run _in container app_
+The following commands needs to be run **_in app container_** :
+
 - Push db schema : `npx prisma db push`
 - Generate prisma client : `npx prisma generate`
 - Seeding : `npm run seed`
 - Prisma studio : `npx prisma studio`
+
+The following commands needs to be run **_in mongo shell_** :
+
+- Enable replica : `rs.initiate();`
+- Verify replica status : `rs.status();`
 
 ## How to use the API
 TODO : Swagger
