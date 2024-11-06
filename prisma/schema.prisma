@@ -11,6 +11,7 @@ model User {
   id               String   @id @default(auto()) @map("_id") @db.ObjectId
   email            String   @unique
   password         String
+  role             String
   phoneNotification Boolean
   phoneNumber      String
   bookings         Booking[] @relation("userBookings")
@@ -47,7 +48,7 @@ model BookingPassenger {
 model Flight {
   id                 String   @id @default(auto()) @map("_id") @db.ObjectId
   bookingOpenStatus  Boolean
-  flightStatus       String
+  flightStatus       Boolean @default(true)
   departureAirport   String
   arrivalAirport     String
   departureDate      DateTime

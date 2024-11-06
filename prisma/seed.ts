@@ -18,6 +18,20 @@ async function main() {
         },
     });
 
+    const location3 = await prisma.location.create({
+        data: {
+            city: 'Bastia',
+            country: 'Corsica',
+        },
+    });
+
+    const location4 = await prisma.location.create({
+        data: {
+            city: 'Sao Paulo',
+            country: 'Brazil',
+        },
+    });
+
     // Create some airport
     const airport1 = await prisma.airport.create({
         data: {
@@ -34,6 +48,21 @@ async function main() {
             locationId: location2.id,
         },
     });
+    const airport3 = await prisma.airport.create({
+        data: {
+            airportName: 'Bastia Airport',
+            servedCities: 'Corsica',
+            locationId: location3.id,
+        },
+    });
+
+    const airport4 = await prisma.airport.create({
+        data: {
+            airportName: 'São Paulo/Guarulhos–Governador André Franco Montoro International Airport',
+            servedCities: 'Brazil',
+            locationId: location4.id,
+        },
+    });
 
     // Create some airlineCompany
     const airlineCompany = await prisma.airlineCompany.create({
@@ -42,11 +71,17 @@ async function main() {
         },
     });
 
+    const airlineCompany2 = await prisma.airlineCompany.create({
+        data: {
+            companyName: 'Air Corsica',
+        },
+    });
+
     // Create a flight
-    const flight = await prisma.flight.create({
+    const flight1 = await prisma.flight.create({
         data: {
             bookingOpenStatus: true,
-            flightStatus: 'Scheduled',
+            flightStatus: true,
             departureAirport: airport1.airportName,
             arrivalAirport: airport2.airportName,
             departureDate: new Date('2024-12-15T10:00:00Z'),
@@ -55,8 +90,20 @@ async function main() {
         },
     });
 
-    // Create a stopover
-    const stopover = await prisma.stopover.create({
+    const flight2 = await prisma.flight.create({
+        data: {
+            bookingOpenStatus: true,
+            flightStatus: false,
+            departureAirport: airport3.airportName,
+            arrivalAirport: airport4.airportName,
+            departureDate: new Date('2025-01-15T10:00:00Z'),
+            arrivalDate: new Date('2025-01-15T18:00:00Z'),
+            airlineCompanyId: airlineCompany2.id,
+        },
+    });
+
+    // Create some stopover
+    const stopover1 = await prisma.stopover.create({
         data: {
             arrivalDate: new Date('2024-12-15T13:00:00Z'),
             departureDate: new Date('2024-12-15T14:30:00Z'),
@@ -64,19 +111,45 @@ async function main() {
         },
     });
 
+    const stopover2 = await prisma.stopover.create({
+        data: {
+            arrivalDate: new Date('2025-01-15T13:00:00Z'),
+            departureDate: new Date('2025-01-15T14:30:00Z'),
+            locationId: location2.id,
+        },
+    });
+
     // Link flight & stopover
     await prisma.flightStopover.create({
         data: {
-            flightId: flight.id,
-            stopoverId: stopover.id,
+            flightId: flight1.id,
+            stopoverId: stopover1.id,
+        },
+    });
+
+    await prisma.flightStopover.create({
+        data: {
+            flightId: flight2.id,
+            stopoverId: stopover2.id,
         },
     });
 
     // Create a user
     const user = await prisma.user.create({
         data: {
+            email: 'admin@admin.com',
+            password: 'adminadmin',
+            role: 'ADMIN',
+            phoneNotification: true,
+            phoneNumber: '2345678900',
+        },
+    });
+
+    const user2 = await prisma.user.create({
+        data: {
             email: 'user@example.com',
             password: 'password123',
+            role: '',
             phoneNotification: true,
             phoneNumber: '1234567890',
         },
@@ -100,24 +173,32 @@ async function main() {
     });
 
     // Create a booking & link passengers
-    const booking = await prisma.booking.create({
+    const booking1 = await prisma.booking.create({
         data: {
             bookingStatus: 'Confirmed',
             userId: user.id,
-            flightId: flight.id,
+            flightId: flight1.id,
+        },
+    });
+
+    const booking2 = await prisma.booking.create({
+        data: {
+            bookingStatus: 'Confirmed',
+            userId: user2.id,
+            flightId: flight2.id,
         },
     });
 
     await prisma.bookingPassenger.create({
         data: {
-            bookingId: booking.id,
+            bookingId: booking1.id,
             passengerId: passenger1.id,
         },
     });
 
     await prisma.bookingPassenger.create({
         data: {
-            bookingId: booking.id,
+            bookingId: booking2.id,
             passengerId: passenger2.id,
         },
     });
