@@ -22,6 +22,7 @@ The following commands needs to be run **_in app container_** :
 - Generate prisma client : `npx prisma generate`
 - Seeding : `npm run seed`
 - Prisma studio : `npx prisma studio`
+- Reset db schema and push seed : `npm run resetdb`
 
 The following commands needs to be run **_in mongo shell_** :
 
