@@ -37,6 +37,7 @@ rs.reconfig({
   ]
 }, { force: true });
 ```
+*This reconfig is a simplified version of the documentation [here](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/)*
 
 ## How to use the API
 TODO : Swagger
