@@ -149,7 +149,6 @@ async function main() {
         data: {
             email: 'user@example.com',
             password: 'password123',
-            role: '',
             phoneNotification: true,
             phoneNumber: '1234567890',
         },
