@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
 
         return NextResponse.json(airlineCompany, { status: 201 });
     } catch (error) {
-        console.error("Error during ailine company creation:", error);
+        console.error("Error during airline company creation:", error);
         return NextResponse.json(
             { error: "Airline company creation failed" },
             { status: 400 }
