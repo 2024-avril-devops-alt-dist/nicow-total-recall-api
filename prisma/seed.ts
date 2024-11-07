@@ -36,7 +36,6 @@ async function main() {
     const airport1 = await prisma.airport.create({
         data: {
             airportName: 'Charles de Gaulle Airport',
-            servedCities: 'Paris',
             locationId: location1.id,
         },
     });
@@ -44,14 +43,12 @@ async function main() {
     const airport2 = await prisma.airport.create({
         data: {
             airportName: 'JFK International Airport',
-            servedCities: 'New York',
             locationId: location2.id,
         },
     });
     const airport3 = await prisma.airport.create({
         data: {
             airportName: 'Bastia Airport',
-            servedCities: 'Corsica',
             locationId: location3.id,
         },
     });
@@ -59,9 +56,18 @@ async function main() {
     const airport4 = await prisma.airport.create({
         data: {
             airportName: 'São Paulo/Guarulhos–Governador André Franco Montoro International Airport',
-            servedCities: 'Brazil',
             locationId: location4.id,
         },
+    });
+
+    // Define served cities via AirportLocation
+    await prisma.airportsOnLocations.createMany({
+        data: [
+            { airportId: airport1.id, locationId: location1.id }, // Paris served by Charles de Gaulle
+            { airportId: airport2.id, locationId: location2.id }, // New York served by JFK
+            { airportId: airport3.id, locationId: location3.id }, // Corsica served by Bastia Airport
+            { airportId: airport4.id, locationId: location4.id }, // Brazil served by São Paulo Airport
+        ],
     });
 
     // Create some airlineCompany
@@ -120,14 +126,14 @@ async function main() {
     });
 
     // Link flight & stopover
-    await prisma.flightStopover.create({
+    await prisma.flightsOnStopovers.create({
         data: {
             flightId: flight1.id,
             stopoverId: stopover1.id,
         },
     });
 
-    await prisma.flightStopover.create({
+    await prisma.flightsOnStopovers.create({
         data: {
             flightId: flight2.id,
             stopoverId: stopover2.id,
@@ -188,14 +194,14 @@ async function main() {
         },
     });
 
-    await prisma.bookingPassenger.create({
+    await prisma.bookingsOnPassengers.create({
         data: {
             bookingId: booking1.id,
             passengerId: passenger1.id,
         },
     });
 
-    await prisma.bookingPassenger.create({
+    await prisma.bookingsOnPassengers.create({
         data: {
             bookingId: booking2.id,
             passengerId: passenger2.id,

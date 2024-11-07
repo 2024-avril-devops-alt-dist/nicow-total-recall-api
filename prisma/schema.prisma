@@ -22,7 +22,7 @@ model Passenger {
   firstName String
   lastName  String
   age       Int
-  bookings  BookingPassenger[] @relation("passengerBookings")
+  bookings  BookingsOnPassengers[] @relation("passengerBookings")
 }
 
 model Booking {
@@ -32,10 +32,10 @@ model Booking {
   user          User @relation("userBookings", fields: [userId], references: [id])
   flightId      String   @db.ObjectId
   flight        Flight @relation("flightBookings", fields: [flightId], references: [id])
-  passengers    BookingPassenger[] @relation("bookingPassengers")
+  passengers    BookingsOnPassengers[] @relation("bookingPassengers")
 }
 
-model BookingPassenger {
+model BookingsOnPassengers {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   bookingId   String   @db.ObjectId
   passengerId String   @db.ObjectId
@@ -55,11 +55,11 @@ model Flight {
   arrivalDate        DateTime
   airlineCompanyId   String   @db.ObjectId
   airlineCompany     AirlineCompany @relation(fields: [airlineCompanyId], references: [id])
-  stopovers          FlightStopover[] @relation("flightStopovers")
+  stopovers          FlightsOnStopovers[] @relation("flightStopovers")
   bookings           Booking[] @relation("flightBookings")
 }
 
-model FlightStopover {
+model FlightsOnStopovers {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   flightId    String   @db.ObjectId
   stopoverId  String   @db.ObjectId
@@ -75,7 +75,7 @@ model Stopover {
   departureDate DateTime
   locationId    String   @db.ObjectId
   location      Location @relation(fields: [locationId], references: [id])
-  FlightStopover FlightStopover[]
+  FlightStopover FlightsOnStopovers[]
 }
 
 model Location {
@@ -84,14 +84,26 @@ model Location {
   country    String
   stopovers  Stopover[]
   airports   Airport[]
+  servedBy   AirportsOnLocations[]
 }
 
 model Airport {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   airportName String
-  servedCities String
+  servedCities  AirportsOnLocations[]
   locationId  String   @db.ObjectId
   location    Location @relation(fields: [locationId], references: [id])
+}
+
+model AirportsOnLocations {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  airportId  String   @db.ObjectId
+  locationId String   @db.ObjectId
+
+  airport    Airport  @relation(fields: [airportId], references: [id])
+  location   Location @relation(fields: [locationId], references: [id])
+
+  @@unique([airportId, locationId])
 }
 
 model AirlineCompany {
