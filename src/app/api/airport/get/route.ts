@@ -10,15 +10,15 @@ export async function GET(req: NextRequest) {
     }
 
     try {
-        const airlineCompanies = await prisma.airlineCompany.findMany({
+        const airports = await prisma.airport.findMany({
             include: {
-                flights: true,
+                location: true,
             }
         });
-        return NextResponse.json(airlineCompanies ?? []);
+        return NextResponse.json(airports ?? []);
     } catch (error) {
         return NextResponse.json(
-            {error: "Failed to fetch airline companies"},
+            {error: "Failed to fetch airports"},
             {status: 500}
         );
     }

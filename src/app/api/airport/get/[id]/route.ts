@@ -11,15 +11,15 @@ export async function GET(req: NextRequest, { params }: {params: {id: string } }
 
     try {
         const { id } = params;
-        const airlineCompany = await prisma.airlineCompany.findUnique({
+        const airport = await prisma.airport.findUnique({
             where: {
                 id: id,
             },
             include: {
-                flights: true,
+                location: true,
             }
         });
-        return NextResponse.json(airlineCompany ?? []);
+        return NextResponse.json(airport ?? []);
     } catch (error) {
         return NextResponse.json(
             { error: "Failed to fetch airport" },
