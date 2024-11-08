@@ -14,6 +14,9 @@ export async function GET(req: NextRequest, { params }: {params: {id: string } }
         const flight = await prisma.flight.findUnique({
             where: {
                 id: id,
+            },
+            include: {
+                airlineCompany: true,
             }
         });
         return NextResponse.json(flight ?? []);
