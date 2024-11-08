@@ -66,3 +66,9 @@ If I have enough time, I will add pipelines documentation here.
 - Generate prisma client (refresh)
 - Enable replica in mongo shell
 - Push seed & see the result on prisma studio !
+
+## Links
+
+- [Schema](https://laconsole.dev/formations/prisma/prisma-schema#relations)
+- [API route](https://corbado.com/blog/nextjs-prisma)
+- [Doc Prisma for queries](https://www.prisma.io/docs/orm/prisma-client/queries/filtering-and-sorting)
