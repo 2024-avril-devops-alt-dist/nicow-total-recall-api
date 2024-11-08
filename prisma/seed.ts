@@ -144,7 +144,6 @@ async function main() {
     const user = await prisma.user.create({
         data: {
             email: 'admin@admin.com',
-            password: 'adminadmin',
             role: 'ADMIN',
             phoneNotification: true,
             phoneNumber: '2345678900',
@@ -154,7 +153,6 @@ async function main() {
     const user2 = await prisma.user.create({
         data: {
             email: 'user@example.com',
-            password: 'password123',
             phoneNotification: true,
             phoneNumber: '1234567890',
         },

@@ -53,7 +53,7 @@ If I have enough time, I will add pipelines documentation here.
 - Dockerize with Dockerfile & docker-compose.yml
 - - Dockerfile needs install of prisma globally in it
 - - Dockerfile needs prisma generate
-- `npm install prisma typescript ts-node @types/node esbuild --save-dev`
+- `npm install prisma typescript ts-node @types/node esbuild next-auth@beta --save-dev`
 - Put this in script (see more [here](https://github.com/prisma/prisma/issues/7053)) : 
 ```json
 {
