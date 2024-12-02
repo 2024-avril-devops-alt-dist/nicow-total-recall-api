@@ -1,5 +1,5 @@
 import {NextRequest, NextResponse} from "next/server";
-import prisma from "../../../../../lib/prisma";
+import services from "@/app/lib/services";
 
 export async function POST(req: NextRequest) {
     if (!process.env.DATABASE_URL) {
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        const airlineCompany = await prisma.airlineCompany.create({
+        const airlineCompany = await services.airlineCompany.create({
             data: {
                 companyName,
             },

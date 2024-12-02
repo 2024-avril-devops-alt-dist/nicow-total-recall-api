@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "../../../../../lib/prisma";
+import services from "@/app/lib/services";
 
 export async function GET(req: NextRequest) {
     if (!process.env.DATABASE_URL) {
@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
     }
 
     try {
-        const flights = await prisma.flight.findMany();
+        const flights = await services.flight.findMany();
         return NextResponse.json(flights ?? []);
     } catch (error) {
         return NextResponse.json(

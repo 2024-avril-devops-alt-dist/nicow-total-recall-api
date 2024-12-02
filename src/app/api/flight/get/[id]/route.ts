@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "../../../../../../lib/prisma";
+import services from "@/app/lib/services";
 
 export async function GET(req: NextRequest, { params }: {params: {id: string } }) {
     if (!process.env.DATABASE_URL) {
@@ -11,7 +11,7 @@ export async function GET(req: NextRequest, { params }: {params: {id: string } }
 
     try {
         const { id } = params;
-        const flight = await prisma.flight.findUnique({
+        const flight = await services.flight.findUnique({
             where: {
                 id: id,
             },

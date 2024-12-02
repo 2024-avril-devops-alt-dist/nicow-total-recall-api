@@ -1,5 +1,5 @@
 import {NextRequest, NextResponse} from "next/server";
-import prisma from "../../../../../lib/prisma";
+import prisma from "@/app/lib/services";
 
 export async function POST(req: NextRequest) {
     if (!process.env.DATABASE_URL) {
@@ -11,6 +11,7 @@ export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
         const { bookingOpenStatus,
+            flightStatus,
             departureAirport,
             arrivalAirport,
             departureDate,
@@ -33,6 +34,7 @@ export async function POST(req: NextRequest) {
         const flight = await prisma.flight.create({
             data: {
                 bookingOpenStatus,
+                flightStatus,
                 departureAirport,
                 arrivalAirport,
                 departureDate,
