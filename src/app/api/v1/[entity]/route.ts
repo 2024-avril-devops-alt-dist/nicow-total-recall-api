@@ -8,7 +8,7 @@ import {
 } from "@/app/lib/services";
 
 /**
- *
+ * Get entity in database.
  * @param req
  * @param params
  * @method isSetDatabase
@@ -35,6 +35,14 @@ export async function GET(req: NextRequest, { params } : { params: { entity: str
     return prismaFindMany(validatedEntity)
 }
 
+/**
+ * Create entity in database.
+ * @param req
+ * @param params
+ * @method isSetDatabase
+ * @method validateEntity
+ * @method prismaCreate
+ */
 export async function POST(req: NextRequest, { params }: { params: { entity: string } }) {
 
 
