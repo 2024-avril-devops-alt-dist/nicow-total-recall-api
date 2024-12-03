@@ -5,11 +5,11 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 RUN npm install
-RUN npm install -g services
+RUN npm install -g prisma
 
 COPY . .
 
-RUN npx services generate
+RUN npx prisma generate
 
 EXPOSE 3000
 
