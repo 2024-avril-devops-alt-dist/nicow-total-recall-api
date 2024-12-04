@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import {z} from "zod";
+import {isAuthenticated, isSetDatabase} from "@/app/lib/utils";
 import {
-    isSetDatabase,
     prismaDelete,
     prismaFindById,
     prismaUpdate,
@@ -17,12 +16,16 @@ import {
  * @method prismaFindById
  */
 export async function GET(req: NextRequest, { params }: { params: { entity: string, id: string } }) {
+
     const { entity, id } = params;
 
-    const dbCheck = isSetDatabase();
-    if (dbCheck) {
-        return dbCheck;
+    if (entity !== "Booking" && entity !== "Flight") {
+        const isAuth = isAuthenticated(req);
+        if (isAuth) return isAuth;
     }
+
+    const dbCheck = isSetDatabase();
+    if(dbCheck) return dbCheck;
 
     const validatedEntity = validateEntity(entity);
     if (!validatedEntity) {
@@ -45,12 +48,14 @@ export async function GET(req: NextRequest, { params }: { params: { entity: stri
  * @method prismaUpdate
  */
 export async function PUT(req: NextRequest, { params }: { params: { entity: string, id: string } }) {
+
     const { entity, id } = params;
 
+    const isAuth = isAuthenticated(req);
+    if (isAuth) return isAuth;
+
     const dbCheck = isSetDatabase();
-    if (dbCheck) {
-        return dbCheck;
-    }
+    if(dbCheck) return dbCheck;
 
     const validatedEntity = validateEntity(entity);
     if (!validatedEntity) {
@@ -72,12 +77,14 @@ export async function PUT(req: NextRequest, { params }: { params: { entity: stri
  * @method prismaDelete
  */
 export async function DELETE(req: NextRequest, { params }: { params: { entity: string, id: string } }) {
+
     const { entity, id } = params;
 
+    const isAuth = isAuthenticated(req);
+    if (isAuth) return isAuth;
+
     const dbCheck = isSetDatabase();
-    if (dbCheck) {
-        return dbCheck;
-    }
+    if(dbCheck) return dbCheck;
 
     const validatedEntity = validateEntity(entity);
     if (!validatedEntity) {

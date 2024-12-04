@@ -21,20 +21,6 @@ const prismaModelMapper: Record<PrismaModels, any> = {
 };
 
 /**
- * Check if database url is set.
- */
-export function isSetDatabase () {
-
-    if (!process.env.DATABASE_URL) {
-        return NextResponse.json(
-            { error: "DATABASE_URL is not set" },
-            { status: 500 }
-        );
-    }
-
-}
-
-/**
  * Check if entity exists.
  * @param entity
  * @returns null if entity exists, and is validated.

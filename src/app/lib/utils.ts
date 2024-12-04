@@ -1,4 +1,20 @@
 import { Prisma } from "@prisma/client";
+import {NextRequest, NextResponse} from "next/server";
+import {auth} from "@/app/auth";
+
+/**
+ * Check if database url is set.
+ */
+export function isSetDatabase () {
+
+    if (!process.env.DATABASE_URL) {
+        return NextResponse.json(
+            { error: "DATABASE_URL is not set" },
+            { status: 500 }
+        );
+    }
+
+}
 
 /**
  * Get required fields for an entity in prisma schema.
@@ -18,4 +34,19 @@ export function getRequiredFields(modelName: Prisma.ModelName): string[] {
     return modelMeta.fields
         .filter((field) => field.isRequired && !field.isId && !field.hasDefaultValue && !field.relationName)
         .map((field) => field.name);
+}
+
+/**
+ * Check if user is authenticated.
+ * @param req
+ */
+export async function isAuthenticated (req: NextRequest) {
+    const session = await auth(req);
+    if (!session || !session.user) {
+        return NextResponse.json(
+            { error: "Unauthorized" },
+            { status: 401, headers: { "Content-Type": "application/json" }}
+        );
+    }
+    return null;
 }
