@@ -20,7 +20,7 @@ export async function GET(req: NextRequest, { params }: { params: { entity: stri
     const { entity, id } = await params;
 
     if (entity !== "Booking" && entity !== "Flight") {
-        const isAuth = isAuthenticated(req);
+        const isAuth = await isAuthenticated(req);
         if (isAuth) return isAuth;
     }
 
@@ -51,7 +51,7 @@ export async function PUT(req: NextRequest, { params }: { params: { entity: stri
 
     const { entity, id } = await params;
 
-    const isAuth = isAuthenticated(req);
+    const isAuth = await isAuthenticated(req);
     if (isAuth) return isAuth;
 
     const dbCheck = isSetDatabase();
@@ -80,7 +80,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { entity: s
 
     const { entity, id } = await params;
 
-    const isAuth = isAuthenticated(req);
+    const isAuth = await isAuthenticated(req);
     if (isAuth) return isAuth;
 
     const dbCheck = isSetDatabase();

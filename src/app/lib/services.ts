@@ -185,7 +185,7 @@ export async function prismaDelete(entity: PrismaModels, id: string) {
             where: { id: String(id) },
         });
 
-        return NextResponse.json(deletedEntity, { status: 200 });
+        return NextResponse.json({ message:`Entity ${id} deleted` }, { status: 200 });
     } catch (error) {
         console.error(`Error during ${entity} delete:`, error);
         return NextResponse.json({ error: "Entity delete failed" }, { status: 500 });
