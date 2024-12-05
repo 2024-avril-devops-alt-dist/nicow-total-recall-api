@@ -7,9 +7,9 @@ To launch the project on your local network, follow the next steps.
 ## How to start the project
 First, create .env `cp .env.dist .env`  
 Then, start container : `docker compose up --build -d`  
-Push your db schema & generate services client : `docker compose exec app npx services db push && npx services generate`  
+Push your db schema & generate prisma client : `docker compose exec app npx prisma db push && npx prisma generate`  
 When started, you can see your page [here](http://localhost:3000/)  
-You can see your db content with services studio : `npx services studio`
+You can see your db content with prisma studio : `npx prisma studio`
 
 ## Commands
 - Enter in app container : `docker compose exec app sh`
@@ -18,10 +18,10 @@ You can see your db content with services studio : `npx services studio`
 
 The following commands needs to be run **_in app container_** :
 
-- Push db schema : `npx services db push`
-- Generate services client : `npx services generate`
+- Push db schema : `npx prisma db push`
+- Generate prisma client : `npx prisma generate`
 - Seeding : `npm run seed`
-- Prisma studio : `npx services studio`
+- Prisma studio : `npx prisma studio`
 - Reset db schema and push seed : `npm run resetdb`
 
 The following commands needs to be run **_in mongo shell_** :
@@ -40,7 +40,8 @@ rs.reconfig({
 *This reconfig is a simplified version of the documentation [here](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/)*
 
 ## How to use the API
-TODO : Swagger
+See swagger doc on HomePage !
+You need to authenticate with Google account, or create one on the website.
 
 ## Test
 When I have time, I will add test documentation here.
@@ -51,24 +52,25 @@ If I have enough time, I will add pipelines documentation here.
 ## How I made this project
 - `npx create-next-app@latest`
 - Dockerize with Dockerfile & docker-compose.yml
-- - Dockerfile needs install of services globally in it
-- - Dockerfile needs services generate
-- `npm i services typescript ts-node @types/node zod esbuild next-auth@beta swagger --save-dev`
+- - Dockerfile needs install of prisma globally in it
+- - Dockerfile needs prisma generate
+- `npm i prisma typescript ts-node @types/node zod esbuild next-auth@beta swagger-ui-react @types/swagger-ui-react next-swagger-doc --save-dev`
 - Put this in script (see more [here](https://github.com/prisma/prisma/issues/7053)) : 
 ```json
 {
   "scripts": {
-    "seed": "esbuild services/seed.ts --outfile=node_modules/tmp-seed.cjs --bundle --format=cjs --external:services --external:@services/client && node node_modules/tmp-seed.cjs --preview-feature"
+    "seed": "esbuild prisma/seed.ts --outfile=node_modules/tmp-seed.cjs --bundle --format=cjs --external:prisma --external:@prisma/client && node node_modules/tmp-seed.cjs --preview-feature"
   }
 }
 ```
 - Push schema to db
-- Generate services client (refresh)
+- Generate prisma client (refresh)
 - Enable replica in mongo shell
-- Push seed & see the result on services studio !
+- Push seed & see the result on prisma studio !
 
 ## Links
 
 - [Schema](https://laconsole.dev/formations/prisma/prisma-schema#relations)
 - [API route](https://corbado.com/blog/nextjs-prisma)
 - [Doc Prisma for queries](https://www.prisma.io/docs/orm/prisma-client/queries/filtering-and-sorting)
+- [Auth.js](https://www.youtube.com/watch?v=Rs8018RO5YQ)
