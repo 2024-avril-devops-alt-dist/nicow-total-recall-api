@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import {z} from "zod";
+import {isAuthenticated, isSetDatabase} from "@/app/lib/utils";
 import {
-    isSetDatabase,
     prismaCreate,
     prismaFindMany,
     validateEntity,
@@ -17,12 +16,15 @@ import {
  */
 export async function GET(req: NextRequest, { params } : { params: { entity: string } }) {
 
-    const { entity } = params;
+    const { entity } = await params;
+
+    if (entity !== "Flight" && entity !== "Booking") {
+        const isAuth = await isAuthenticated(req);
+        if (isAuth) return isAuth;
+    }
 
     const dbCheck = isSetDatabase();
-    if(dbCheck) {
-        return dbCheck;
-    }
+    if (dbCheck) return dbCheck;
 
     const validatedEntity = validateEntity(entity);
     if (!validatedEntity) {
@@ -45,13 +47,13 @@ export async function GET(req: NextRequest, { params } : { params: { entity: str
  */
 export async function POST(req: NextRequest, { params }: { params: { entity: string } }) {
 
+    const { entity } = await params;
 
-    const { entity } = params;
+    const isAuth = await isAuthenticated(req);
+    if (isAuth) return isAuth;
 
     const dbCheck = isSetDatabase();
-    if(dbCheck) {
-        return dbCheck;
-    }
+    if(dbCheck) return dbCheck;
 
     const validatedEntity = validateEntity(entity);
     if (!validatedEntity) {

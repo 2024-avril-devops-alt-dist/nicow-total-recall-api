@@ -1,0 +1,841 @@
+openapi: 3.0.0
+info:
+  title: Total Recall
+  description: >-
+    An easy-to-use API from Total Recall, to make your own flight booking
+    application.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+components:
+  securitySchemes:
+    noauthAuth:
+      type: http
+      scheme: noauth
+tags:
+  - name: V1
+    description: First version of Total Recall API.
+  - name: V1 > AirlineCompany
+  - name: V1 > Airport
+  - name: V1 > Booking
+  - name: V1 > Flight
+  - name: V1 > Location
+  - name: V1 > Passenger
+  - name: V1 > Stopover
+  - name: V1 > User
+paths:
+  /api/v1/AirlineCompany:
+    get:
+      tags:
+        - V1 > AirlineCompany
+      summary: AirlineCompany
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - V1 > AirlineCompany
+      summary: AirlineCompany
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n            \"companyName\": \"Air Brazil\"\n}"'
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/AirlineCompany/674eeb0f3b58dc0dc6f49b66:
+    get:
+      tags:
+        - V1 > AirlineCompany
+      summary: AirlineCompany by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - V1 > AirlineCompany
+      summary: AirlineCompany by id
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n            \"companyName\": \"Air Frais\"\n}"'
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - V1 > AirlineCompany
+      summary: AirlineCompany by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/Airport:
+    get:
+      tags:
+        - V1 > Airport
+      summary: Airport
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - V1 > Airport
+      summary: Airport
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n        \"airportName\": \"Brazil Airport\",\n       
+                \"locationId\": \"674eeb0f3b58dc0dc6f49b5a\"\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/Airport/674eeb0f3b58dc0dc6f49b5e:
+    get:
+      tags:
+        - V1 > Airport
+      summary: Airport by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - V1 > Airport
+      summary: Airport by id
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n        \"airportName\": \"Fresh Airport\",\n       
+                \"locationId\": \"674eeb0f3b58dc0dc6f49b5a\"\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - V1 > Airport
+      summary: Airport by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/Booking:
+    get:
+      tags:
+        - V1 > Booking
+      summary: Booking
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - V1 > Booking
+      summary: Booking
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n        \"bookingStatus\": \"Confirmed\",\n       
+                \"userId\": \"674eeb0f3b58dc0dc6f49b6e\",\n        \"flightId\":
+                \"674eeb0f3b58dc0dc6f49b68\"\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/Booking/674eeb0f3b58dc0dc6f49b72:
+    get:
+      tags:
+        - V1 > Booking
+      summary: Booking by id
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - V1 > Booking
+      summary: Booking by id
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n        \"bookingStatus\": \"Confirmed\",\n       
+                \"userId\": \"674eeb0f3b58dc0dc6f49b6e\",\n        \"flightId\":
+                \"674eeb0f3b58dc0dc6f49b68\"\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - V1 > Booking
+      summary: Booking by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/Flight:
+    get:
+      tags:
+        - V1 > Flight
+      summary: Flight
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - V1 > Flight
+      summary: Flight
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n    \"bookingOpenStatus\": true,\n    \"departureAirport\":
+                \"Bastia Airport\",\n    \"arrivalAirport\": \"São
+                Paulo/Guarulhos–Governador André Franco Montoro International
+                Airport\",\n    \"departureDate\":
+                \"2024-12-15T10:00:00.000Z\",\n    \"arrivalDate\":
+                \"2025-12-15T10:00:00.000Z\",\n    \"airlineCompanyId\":
+                \"674eeb0f3b58dc0dc6f49b67\"\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/Flight/6751a27a35b2f3ef4dd8677b:
+    get:
+      tags:
+        - V1 > Flight
+      summary: Flight by id
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/Flight/6751b7d0a91d9f39d623903b:
+    put:
+      tags:
+        - V1 > Flight
+      summary: Flight by id
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n    \"bookingOpenStatus\": true,\n    \"departureAirport\":
+                \"Bastia Airport\",\n    \"arrivalAirport\": \"São
+                Paulo/Guarulhos–Governador André Franco Montoro International
+                Airport\",\n    \"departureDate\":
+                \"2024-12-15T10:00:00.000Z\",\n    \"arrivalDate\":
+                \"2025-12-15T10:00:00.000Z\",\n    \"airlineCompanyId\":
+                \"674eeb0f3b58dc0dc6f49b67\"\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - V1 > Flight
+      summary: Flight by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/Location:
+    get:
+      tags:
+        - V1 > Location
+      summary: Location
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - V1 > Location
+      summary: Location
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n        \"city\": \"Montreal\",\n        \"country\":
+                \"Canada\"\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/Location/674eeb0f3b58dc0dc6f49b5a:
+    get:
+      tags:
+        - V1 > Location
+      summary: Location by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - V1 > Location
+      summary: Location by id
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n        \"city\": \"Montireal\",\n        \"country\":
+                \"Canada\"\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - V1 > Location
+      summary: Location by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/Passenger:
+    get:
+      tags:
+        - V1 > Passenger
+      summary: Passenger
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - V1 > Passenger
+      summary: Passenger
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n        \"firstName\": \"John\",\n        \"lastName\":
+                \"Smith\",\n        \"age\": 33\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/Passenger/674eeb0f3b58dc0dc6f49b70:
+    get:
+      tags:
+        - V1 > Passenger
+      summary: Passenger by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - V1 > Passenger
+      summary: Passenger by id
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n        \"firstName\": \"John\",\n        \"lastName\":
+                \"Smith\",\n        \"age\": 33\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - V1 > Passenger
+      summary: Passenger by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/Stopover:
+    get:
+      tags:
+        - V1 > Stopover
+      summary: Stopover
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - V1 > Stopover
+      summary: Stopover
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n        \"arrivalDate\":
+                \"2025-01-15T13:00:00.000Z\",\n        \"departureDate\":
+                \"2025-01-15T14:30:00.000Z\",\n        \"locationId\":
+                \"674eeb0f3b58dc0dc6f49b5b\"\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/Stopover/674eeb0f3b58dc0dc6f49b6a:
+    get:
+      tags:
+        - V1 > Stopover
+      summary: Stopover by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - V1 > Stopover
+      summary: Stopover by id
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n        \"arrivalDate\":
+                \"2025-01-15T13:00:00.000Z\",\n        \"departureDate\":
+                \"2025-01-15T14:30:00.000Z\",\n        \"locationId\":
+                \"674eeb0f3b58dc0dc6f49b5b\"\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - V1 > Stopover
+      summary: Stopover by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/User:
+    get:
+      tags:
+        - V1 > User
+      summary: User
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - V1 > User
+      summary: User
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n        \"email\": \"user2@example.com\",\n        \"role\":
+                \"USER\",\n        \"phoneNotification\": true,\n       
+                \"phoneNumber\": \"1234567890\"\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/User/674eeb0f3b58dc0dc6f49b6e:
+    get:
+      tags:
+        - V1 > User
+      summary: User by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - V1 > User
+      summary: User by id
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n        \"email\": \"user2@example.com\",\n        \"role\":
+                \"USER\",\n        \"phoneNotification\": true,\n       
+                \"phoneNumber\": \"1234567890\"\n}"
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - V1 > User
+      summary: User by id
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Cookie
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

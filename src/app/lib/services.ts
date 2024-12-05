@@ -21,20 +21,6 @@ const prismaModelMapper: Record<PrismaModels, any> = {
 };
 
 /**
- * Check if database url is set.
- */
-export function isSetDatabase () {
-
-    if (!process.env.DATABASE_URL) {
-        return NextResponse.json(
-            { error: "DATABASE_URL is not set" },
-            { status: 500 }
-        );
-    }
-
-}
-
-/**
  * Check if entity exists.
  * @param entity
  * @returns null if entity exists, and is validated.
@@ -199,7 +185,7 @@ export async function prismaDelete(entity: PrismaModels, id: string) {
             where: { id: String(id) },
         });
 
-        return NextResponse.json(deletedEntity, { status: 200 });
+        return NextResponse.json({ message:`Entity ${id} deleted` }, { status: 200 });
     } catch (error) {
         console.error(`Error during ${entity} delete:`, error);
         return NextResponse.json({ error: "Entity delete failed" }, { status: 500 });
