@@ -4,6 +4,7 @@ import Credentials from "@auth/core/providers/credentials";
 
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+    session: { strategy: "jwt" },
     providers: [
         Google,
         Credentials({
@@ -42,5 +43,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 // return user
             },
         }),
+
     ],
 })

@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
 import {NextRequest, NextResponse} from "next/server";
-import {auth} from "@/app/auth";
+import {getToken} from "@auth/core/jwt";
 
 /**
  * Check if database url is set.
@@ -41,8 +41,9 @@ export function getRequiredFields(modelName: Prisma.ModelName): string[] {
  * @param req
  */
 export async function isAuthenticated (req: NextRequest) {
-    const session = await auth(req);
-    if (!session || !session.user) {
+
+    const token = await getToken({ req, secret: process.env.AUTH_SECRET });
+    if (!token) {
         return NextResponse.json(
             { error: "Unauthorized" },
             { status: 401, headers: { "Content-Type": "application/json" }}

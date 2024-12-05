@@ -17,7 +17,7 @@ import {
  */
 export async function GET(req: NextRequest, { params }: { params: { entity: string, id: string } }) {
 
-    const { entity, id } = params;
+    const { entity, id } = await params;
 
     if (entity !== "Booking" && entity !== "Flight") {
         const isAuth = isAuthenticated(req);
@@ -49,7 +49,7 @@ export async function GET(req: NextRequest, { params }: { params: { entity: stri
  */
 export async function PUT(req: NextRequest, { params }: { params: { entity: string, id: string } }) {
 
-    const { entity, id } = params;
+    const { entity, id } = await params;
 
     const isAuth = isAuthenticated(req);
     if (isAuth) return isAuth;
@@ -78,7 +78,7 @@ export async function PUT(req: NextRequest, { params }: { params: { entity: stri
  */
 export async function DELETE(req: NextRequest, { params }: { params: { entity: string, id: string } }) {
 
-    const { entity, id } = params;
+    const { entity, id } = await params;
 
     const isAuth = isAuthenticated(req);
     if (isAuth) return isAuth;
