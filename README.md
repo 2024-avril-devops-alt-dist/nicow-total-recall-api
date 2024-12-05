@@ -53,7 +53,7 @@ If I have enough time, I will add pipelines documentation here.
 - Dockerize with Dockerfile & docker-compose.yml
 - - Dockerfile needs install of services globally in it
 - - Dockerfile needs services generate
-- `npm install services typescript ts-node @types/node zod esbuild next-auth@beta --save-dev`
+- `npm i services typescript ts-node @types/node zod esbuild next-auth@beta swagger --save-dev`
 - Put this in script (see more [here](https://github.com/prisma/prisma/issues/7053)) : 
 ```json
 {
