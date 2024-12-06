@@ -20,7 +20,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 },
             },
             authorize: async (credentials) => {
-                if(credentials.email === "admin@admin.com" && credentials.password === "admin")
+                if(credentials.email === "admin@default.com" && credentials.password === "default_password")
                     return {
                     name: "Admin",
                     };
