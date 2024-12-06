@@ -7,6 +7,7 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
+      - /app/node_modules
     ports:
       - "3000:3000" #app
       - "5555:5555" #Prisma studio

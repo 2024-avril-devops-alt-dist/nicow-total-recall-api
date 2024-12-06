@@ -1,16 +1,16 @@
 # Total Recall API
 
 ## Description
-This project is an API using NextJS with Typescript on a MongoDB database. Everything is dockerized.
-To launch the project on your local network, follow the next steps.
+This project is an API using NextJS with Typescript on a MongoDB database. Everything is dockerized.   
+To launch the project on your local network, follow the next steps.   
 
 ## How to start the project
-First, create .env `cp .env.dist .env` and complete values with your own
-Then, start container : `docker compose up --build -d`  
-Push your db schema & generate prisma client : `docker compose exec app npx prisma db push && npx prisma generate`  
-*ONLY THE FIRST TIME YOU INSTALL THE PROJECT*, you need to initialize replica : `./setup.sh`
-When started, you can see your page [here](http://localhost:3000/)  
-You can see your db content with prisma studio : `npx prisma studio`, then [here](http://localhost:5555/)
+First, create .env and .env.local `cp .env.dist .env && cp .env.local.dist .env.local` and complete values with your own   
+Then, start container : `docker compose up --build -d`   
+Push your db schema & generate prisma client : `docker compose exec app npx prisma db push && npx prisma generate`   
+***On the first time you install the project***, you need to initialize replica : `./setup.sh`   
+When started, you can see your page [here](http://localhost:3000/)   
+You can see your db content with prisma studio : `npx prisma studio`, then [here](http://localhost:5555/)   
 
 ## Commands
 - Enter in app container : `docker compose exec app sh`
@@ -41,8 +41,8 @@ rs.reconfig({
 *This reconfig is a simplified version of the documentation [here](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/)*
 
 ## How to use the API
-See swagger doc on HomePage !
-You need to authenticate with Google account, or create one on the website.
+See swagger doc on HomePage !   
+You need to authenticate with Google account, or create one on the website.   
 
 ## Test
 When I have time, I will add test documentation here.
