@@ -5,11 +5,12 @@ This project is an API using NextJS with Typescript on a MongoDB database. Every
 To launch the project on your local network, follow the next steps.
 
 ## How to start the project
-First, create .env `cp .env.dist .env`  
+First, create .env `cp .env.dist .env` and complete values with your own
 Then, start container : `docker compose up --build -d`  
 Push your db schema & generate prisma client : `docker compose exec app npx prisma db push && npx prisma generate`  
+*ONLY THE FIRST TIME YOU INSTALL THE PROJECT*, you need to initialize replica : `./setup.sh`
 When started, you can see your page [here](http://localhost:3000/)  
-You can see your db content with prisma studio : `npx prisma studio`
+You can see your db content with prisma studio : `npx prisma studio`, then [here](http://localhost:5555/)
 
 ## Commands
 - Enter in app container : `docker compose exec app sh`
