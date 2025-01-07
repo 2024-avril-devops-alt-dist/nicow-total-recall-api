@@ -1,0 +1,10 @@
+.appBar * {
+    color: var(--nav-text-color);
+    font-size: 26px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.appBar button {
+    cursor: pointer;
+}

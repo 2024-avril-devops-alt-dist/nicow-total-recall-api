@@ -1,20 +1,31 @@
 import {auth, signIn, signOut} from "@/auth";
 import React from "react";
+import Image from "next/image";
+import styles from "@/components/auth/AppBar.module.css";
 
 export async function AppBar() {
     const session = await auth()
     return (
-        <div>
+        <div className={styles.appBar}>
             {session && session.user ? (
-            <div>
-                <p>{session.user.name}</p>
+            <>
+                <p>Welcome {session.user.name}</p>
                 <form action={async() => {
                     "use server"
                     await signOut();
                 }}>
-                    <button type="submit">Sign Out</button>
+                    <button type="submit">
+                        <Image
+                            src="/assets/image/exit.svg"
+                            alt="Disconnect icon"
+                            width={25}
+                            height={25}
+                            priority
+                        />
+                    </button>
                 </form>
-            </div>):(
+            </>
+            ):(
                 <form action={async () => {
                     "use server"
                     await signIn();

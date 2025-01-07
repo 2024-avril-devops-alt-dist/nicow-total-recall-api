@@ -1,5 +1,5 @@
 :root {
-    --nav-background-color: #F24E1E;
+    --nav-background-color: rgba(242, 78, 30, 0.5);
     --nav-text-color: #F0F1F6;
     --nav-height: 150px;
 }
@@ -11,4 +11,6 @@
     list-style: none;
     text-decoration: none;
     font-family: Inter, sans-serif;
+    background-color: transparent;
+    border: none;
 }
