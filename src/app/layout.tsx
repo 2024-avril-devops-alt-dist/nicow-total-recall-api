@@ -1,4 +1,7 @@
-import {AppBar} from "@/app/components/auth/appbar";
+import '@/styles/globals.css';
+import {Header} from "@/components/layout/Header";
+import {Footer} from "@/components/layout/Footer";
+import {HeroBanner} from "@/components/ui/HeroBanner";
 
 export const metadata = {
   title: 'Next.js',
@@ -13,8 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <AppBar />
-      {children}</body>
+      <Header />
+      <HeroBanner />
+      {children}
+      <Footer />
+      </body>
     </html>
   )
 }

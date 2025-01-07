@@ -1,4 +1,4 @@
-import {auth, signIn, signOut} from "@/app/auth";
+import {auth, signIn, signOut} from "@/auth";
 import React from "react";
 
 export async function AppBar() {
