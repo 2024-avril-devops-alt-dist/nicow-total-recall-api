@@ -18,8 +18,8 @@ export async function AppBar() {
                         <Image
                             src="/assets/image/exit.svg"
                             alt="Disconnect icon"
-                            width={25}
-                            height={25}
+                            width={50}
+                            height={50}
                             priority
                         />
                     </button>

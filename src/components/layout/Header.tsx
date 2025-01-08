@@ -1,8 +1,9 @@
 import {Nav} from "@/components/layout/Nav";
+import styles from "@/components/layout/Header.module.css";
 
 export function Header() {
     return (
-        <header className="header">
+        <header className={styles.header}>
             <Nav />
         </header>
     )

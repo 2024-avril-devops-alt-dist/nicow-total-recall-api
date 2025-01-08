@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styles from "@/components/ui/HeroBanner.module.css";
+import Link from "next/link";
 
 export function HeroBanner() {
     return (
@@ -13,15 +14,14 @@ export function HeroBanner() {
             />
             <div className={styles.teaser}>
                 <h1>A new dawn, Mars</h1>
-                <span className="taxonomy-term">HOT</span>
+                <Link className="taxonomy-term" href={'/'}>HOT</Link>
                 <p className="hero-text">The new step of humanity, reachable right now.</p>
-                <p className="map-text">C'est loin d'ici !</p>
+                <p className="map-text">Over 62 millions km from Earth</p>
             </div>
-            <div className={styles.callToAction}>
-                <button>
+
+                <button className={styles.callToAction}>
                     See more
                 </button>
-            </div>
         </section>
     );
 }
