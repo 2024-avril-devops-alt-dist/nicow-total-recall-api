@@ -1,5 +1,5 @@
-import {Nav} from "@/components/layout/Nav";
-import styles from "@/components/layout/Header.module.css";
+import {Nav} from "@/components/layout/Nav/Nav";
+import styles from "@/components/layout/Header/Header.module.css";
 
 export function Header() {
     return (
