@@ -9,7 +9,7 @@ export function Nav () {
             <ul className={styles.navList}>
                 <li className={styles.itemList}><Link href={"/dashboard"}>Dashboard</Link></li>
                 <li className={styles.itemList}><Link href={"/booking"}>Booking</Link></li>
-                <li className={styles.itemList}><Link href={"/public"}>Space Travel
+                <li className={styles.itemList}><Link href={"/"}>Space Travel
                     <Image
                     src="/assets/image/rocket.svg"
                     alt="Rocket logo"
@@ -18,7 +18,7 @@ export function Nav () {
                     priority
                 />
                 </Link></li>
-                <li className={styles.itemList}><Link href={"/contact"}>Contact</Link></li>
+                <li className={styles.itemList}><Link href={"/swagger"}>API</Link></li>
                 <li className={styles.itemList}><AppBar /></li>
             </ul>
         </nav>

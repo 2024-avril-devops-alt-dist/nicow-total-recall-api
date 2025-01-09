@@ -30,6 +30,9 @@ export default function Carousel({ images }: { images: { src: string; alt: strin
                             src={image.src}
                             alt={image.alt}
                             fill
+                            style={{
+                                objectFit: 'cover',
+                            }}
                         />
                         <div className={styles.teaser}>
                             <h2>{image.title}</h2>
