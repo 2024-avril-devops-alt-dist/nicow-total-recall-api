@@ -1,6 +1,6 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 import {NextRequest, NextResponse} from "next/server";
-import {getRequiredFields} from "@/app/lib/utils";
+import {getRequiredFields} from "@/lib/utils";
 
 const prisma = new PrismaClient();
 type PrismaModels = Prisma.ModelName;

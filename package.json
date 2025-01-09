@@ -10,7 +10,7 @@
     "lint": "next lint",
     "seed": "esbuild prisma/seed.ts --outfile=node_modules/tmp-seed.cjs --bundle --format=cjs --external:prisma --external:@prisma/client && node node_modules/tmp-seed.cjs --preview-feature",
     "resetdb": "npx prisma db push --force-reset && npm run seed",
-    "studio" : "docker compose exec app npx prisma studio"
+    "studio": "docker compose exec app npx prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^5.21.1",
@@ -31,6 +31,7 @@
     "next-swagger-doc": "^0.4.1",
     "prisma": "^5.21.1",
     "swagger-ui-react": "^5.18.2",
+    "swiper": "^11.2.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3",
     "zod": "^3.23.8"

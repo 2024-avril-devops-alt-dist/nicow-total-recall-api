@@ -82,6 +82,11 @@ If I have enough time, I will add pipelines documentation here.
 - Add auth.js with Google provider and credentials auth
 - Add swagger documentation (thanks postman for doing all the job)
 
+### Dependencies added for the front part : 
+
+- Swiper
+- React Admin (back office)
+
 ## Links
 
 - [Schema](https://laconsole.dev/formations/prisma/prisma-schema#relations)

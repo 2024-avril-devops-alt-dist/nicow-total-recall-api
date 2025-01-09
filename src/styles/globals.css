@@ -1,0 +1,44 @@
+:root {
+    --nav-background-color: rgba(242, 78, 30, 0.5);
+    --nav-text-color: #F0F1F6;
+    --taxonomy-background-color: #F24E1E;
+    --nav-height: 125px;
+    --text-font-size: 14px;
+    --h1-font-size: 64px;
+    --h2-font-size: 52px;
+    --h3-font-size: 40px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: Inter, sans-serif;
+    background-color: transparent;
+    border: none;
+    color: var(--nav-text-color);
+}
+
+h1 {
+    font-size: var(--h1-font-size);
+}
+
+h2 {
+    font-size: var(--h2-font-size);
+}
+
+h3 {
+    font-size: var(--h3-font-size);
+}
+
+.taxonomy-term {
+    font-size: var(--text-font-size);
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0.25em 0.5em;
+    background-color: var(--taxonomy-background-color);
+    width: fit-content;
+}
