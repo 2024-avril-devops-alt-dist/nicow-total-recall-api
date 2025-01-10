@@ -1,9 +1,11 @@
 "use client";
-import useFetchData from "@/hooks/useFetchData";
-export const SearchBar= () => {
+import {useFetchData} from "@/hooks/useFetchData";
+import styles from "@/components/ui/SearchBar/SearchBar.module.css";
+
+export const SearchBar = () => {
     const url = `${process.env.NEXT_PUBLIC_API_URL}/api/${process.env.NEXT_PUBLIC_API_VERSION}/Flight`;
     const queryKey = ['flights'];
-    const { data, isLoading, isError } = useFetchData(url, queryKey);
+    const {data, isLoading, isError} = useFetchData(url, queryKey);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -16,8 +18,18 @@ export const SearchBar= () => {
     console.log(data);
 
     return (
-        <div>
-            data.flight.id
+        <div className={styles.search}>
+            <ul>
+                {data.map((flight: any) => (
+                    <li key={flight.id}>
+                        {flight.departureAirport} ➡️ {flight.arrivalAirport}
+                        | 🛫 {new Date(flight.departureDate).toLocaleString()}
+                        | 🛬 {new Date(flight.arrivalDate).toLocaleString()}
+                        | {flight.bookingOpenStatus ? "✅ Booking Open" : "❌ Closed"}
+                        | {flight.flightStatus ? "🟢 Active" : "🔴 Inactive"}
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 }
