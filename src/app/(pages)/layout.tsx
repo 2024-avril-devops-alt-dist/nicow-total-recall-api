@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 import {Header} from "@/components/layout/Header/Header";
 import {Footer} from "@/components/layout/Footer/Footer";
+import {ReactQueryProvider} from "@/providers/ReactQueryProvider";
 
 export const metadata = {
   title: 'Next.js',
@@ -15,9 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+      <ReactQueryProvider>
        <Header />
       {children}
       <Footer />
+      </ReactQueryProvider>
       </body>
     </html>
   )

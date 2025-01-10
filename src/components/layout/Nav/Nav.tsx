@@ -8,7 +8,7 @@ export function Nav () {
         <nav className={styles.nav}>
             <ul className={styles.navList}>
                 <li className={styles.itemList}><Link href={"/dashboard"}>Dashboard</Link></li>
-                <li className={styles.itemList}><Link href={"/booking"}>Booking</Link></li>
+                <li className={styles.itemList}><Link href={"/search"}>Booking</Link></li>
                 <li className={styles.itemList}><Link href={"/"}>Space Travel
                     <Image
                     src="/assets/image/rocket.svg"
