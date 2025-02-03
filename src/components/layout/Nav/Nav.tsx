@@ -19,7 +19,8 @@ export function Nav () {
                 />
                 </Link></li>
                 <li className={styles.itemList}><Link href={"/swagger"}>API</Link></li>
-                <li className={styles.itemList}><AppBar /></li>
+                <li className={styles.itemList}>Bonjour</li>
+                {/*<li className={styles.itemList}><AppBar /></li>*/}
             </ul>
         </nav>
     )

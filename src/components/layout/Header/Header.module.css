@@ -1,6 +1,14 @@
-.header {
+.headerHome {
     width: 100%;
     position: fixed;
     top: 0;
     z-index: 100;
+    background-color: var(--nav-background-color);
+}
+
+.header {
+    width: 100%;
+    position: relative;
+    background-color: var(--header-background-color);
+
 }

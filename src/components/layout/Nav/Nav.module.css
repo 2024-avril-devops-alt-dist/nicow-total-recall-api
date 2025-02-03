@@ -1,7 +1,6 @@
 .nav {
     width: 100%;
     height: var(--nav-height);
-    background-color: var(--nav-background-color);
     font-size: 26px;
     text-transform: uppercase;
     font-weight: bold;

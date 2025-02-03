@@ -1,6 +1,7 @@
 :root {
     --nav-background-color: rgba(242, 78, 30, 0.5);
     --nav-text-color: #F0F1F6;
+    --header-background-color: #F24E1E;
     --taxonomy-background-color: #F24E1E;
     --nav-height: 125px;
     --text-font-size: 14px;
@@ -23,4 +24,9 @@ h2 {
 
 h3 {
     font-size: var(--h3-font-size);
+}
+
+.content {
+    background-color: #1F1F1F;
+    color: var(--nav-text-color);
 }
