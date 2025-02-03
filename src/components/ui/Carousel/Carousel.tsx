@@ -6,6 +6,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import {Button} from "@/components/ui/button";
+import {Tag} from "@/components/ui/tag";
 import Link from "next/link";
 
 export default function Carousel({ images }: { images: { src: string; alt: string; title: string; description: string }[] }) {
@@ -36,8 +38,10 @@ export default function Carousel({ images }: { images: { src: string; alt: strin
                         />
                         <div className={styles.teaser}>
                             <h2>{image.title}</h2>
-                            <Link className='taxonomy-term' href={'/'}>Hot</Link>
+                            <Tag className={styles.tag} colorPalette={"red"}>Hot</Tag>
                             <p>{image.description}</p>
+                            <Link href={"/search"}><Button className={styles.button} colorPalette={"orange"}>See More</Button></Link>
+
                         </div>
                     </div>
                 </SwiperSlide>

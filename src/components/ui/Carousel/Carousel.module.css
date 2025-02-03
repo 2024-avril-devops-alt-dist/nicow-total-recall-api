@@ -13,4 +13,16 @@
     display: flex;
     flex-flow: column;
     justify-content: space-around;
+    color: var(--nav-text-color);
+}
+
+.tag {
+    font-weight: bold;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+.button {
+    width: fit-content;
+
 }
