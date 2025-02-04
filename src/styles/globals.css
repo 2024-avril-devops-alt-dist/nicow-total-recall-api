@@ -3,6 +3,7 @@
     --nav-text-color: #F0F1F6;
     --header-background-color: #F24E1E;
     --taxonomy-background-color: #F24E1E;
+    --background-color: #1F1F1F;
     --nav-height: 125px;
     --text-font-size: 14px;
     --h1-font-size: 64px;
@@ -11,6 +12,7 @@
 }
 
 * {
+    list-style: none;
     font-family: Inter, sans-serif;
 }
 
@@ -27,6 +29,6 @@ h3 {
 }
 
 .content {
-    background-color: #1F1F1F;
+    background-color: var(--background-color);
     color: var(--nav-text-color);
 }

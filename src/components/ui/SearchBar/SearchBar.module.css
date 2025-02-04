@@ -1,8 +1,10 @@
-.searchResult {
+.searchBarForm {
+    display: flex;
+    color: var(--background-color);
+}
 
-    .list {
-        & > * {
-            margin: 1em;
-        }
+.searchResult {
+    & > * {
+        padding: 2em;
     }
 }

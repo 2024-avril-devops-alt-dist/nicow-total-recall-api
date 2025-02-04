@@ -86,6 +86,8 @@ If I have enough time, I will add pipelines documentation here.
 
 - Swiper
 - React Admin (back office)
+- Chakra
+- React Date Picker
 
 ## Links
 
