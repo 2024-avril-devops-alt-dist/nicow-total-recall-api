@@ -8,15 +8,12 @@ type PrismaModels = Prisma.ModelName;
 const prismaModelMapper: Record<PrismaModels, any> = {
     User: prisma.user,
     Airport : prisma.airport,
-    AirportsOnLocations: prisma.airportsOnLocations,
     AirlineCompany : prisma.airlineCompany,
     Location : prisma.location,
     Flight : prisma.flight,
     Passenger : prisma.passenger,
     Stopover : prisma.stopover,
-    FlightsOnStopovers : prisma.flightsOnStopovers,
     Booking : prisma.booking,
-    BookingsOnPassengers : prisma.bookingsOnPassengers,
 
 };
 
