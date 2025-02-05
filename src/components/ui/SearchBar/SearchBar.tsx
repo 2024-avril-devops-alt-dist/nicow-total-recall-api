@@ -1,6 +1,6 @@
 "use client";
 import {useFetchData} from "@/hooks/useFetchData";
-import { useState } from "react";
+import {useState} from "react";
 import styles from "@/components/ui/SearchBar/SearchBar.module.css";
 import {Input} from "@chakra-ui/react";
 import {Flight} from "@prisma/client";
@@ -8,9 +8,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export const SearchBar = () => {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/api/${process.env.NEXT_PUBLIC_API_VERSION}/Flight`;
-    const queryKey = ['flights'];
-    const {data, isLoading, isError} = useFetchData(url, queryKey);
+    const url1 = `${process.env.NEXT_PUBLIC_API_URL}/api/${process.env.NEXT_PUBLIC_API_VERSION}/Flight`;
+    const queryKey1 = ['flights'];
+    const {data, isLoading, isError} = useFetchData(url1, queryKey1);
 
     const [departure, setDeparture] = useState("");
     const [arrival, setArrival] = useState("");
@@ -48,9 +48,13 @@ export const SearchBar = () => {
         );
     });
 
+    const filteredActiveFlights = filteredFlights.filter(
+        (flight: Flight) => flight.bookingOpenStatus && flight.flightStatus
+    );
+
     return (
         <>
-            <div className={styles.searchBarContainer}>
+            <div>
                 <form className={styles.searchBarForm} onSubmit={(e) => e.preventDefault()}>
                     <Input
                         placeholder="Departure"
@@ -69,30 +73,32 @@ export const SearchBar = () => {
                         onChange={(date) => setDepartureDate(date)}
                         placeholderText="Departure date"
                         dateFormat="yyyy-MM-dd"
+                        className="chakra-input css-1l2k40q"
                     />
                     <DatePicker
                         selected={arrivalDate}
                         onChange={(date) => setArrivalDate(date)}
                         placeholderText="Arrival date"
                         dateFormat="yyyy-MM-dd"
+                        className="chakra-input css-1l2k40q"
                     />
                 </form>
             </div>
-            <div className={styles.searchResult}>
-                {filteredFlights.length > 0 ? (
-                    filteredFlights.map((flight: Flight) => (
-                        <li key={flight.id}>
-                            <p>Departure airport {flight.departureAirport}</p>
-                            <p>Arrival airport {flight.arrivalAirport}</p>
-                            <p>Departure date {new Date(flight.departureDate).toLocaleString()}</p>
-                            <p>Arrival date {new Date(flight.arrivalDate).toLocaleString()}</p>
-                            <p>{flight.bookingOpenStatus ? "✅ Booking Open" : "❌ Closed"}</p>
-                            <p>{flight.flightStatus ? "🟢 Active" : "🔴 Inactive"}</p>
-                        </li>
-                    ))
-                ) : (
-                    <p>No flight found.</p>
-                )}
+            <div>
+                <ul className={styles.searchResult}>
+                    {filteredActiveFlights.length > 0 ? (
+                        filteredActiveFlights.map((flight: Flight) => (
+                            <li key={flight.id}>
+                                <p>Departure airport {flight.departureAirport}</p>
+                                <p>Arrival airport {flight.arrivalAirport}</p>
+                                <p>Departure date {new Date(flight.departureDate).toLocaleString()}</p>
+                                <p>Arrival date {new Date(flight.arrivalDate).toLocaleString()}</p>
+                            </li>
+                        ))
+                    ) : (
+                        <p>No flight found.</p>
+                    )}
+                </ul>
             </div>
         </>
     )

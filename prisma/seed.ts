@@ -105,7 +105,8 @@ async function main() {
         data: {
             arrivalDate: new Date('2024-12-15T13:00:00Z'),
             departureDate: new Date('2024-12-15T14:30:00Z'),
-            locationId: location1.id,
+            locationId: location3.id,
+            flightId: flight1.id,
         },
     });
 
@@ -113,7 +114,8 @@ async function main() {
         data: {
             arrivalDate: new Date('2025-01-15T13:00:00Z'),
             departureDate: new Date('2025-01-15T14:30:00Z'),
-            locationId: location2.id,
+            locationId: location3.id,
+            flightId: flight2.id
         },
     });
 

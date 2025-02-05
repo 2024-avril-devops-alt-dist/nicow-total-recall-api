@@ -1,6 +1,11 @@
 .searchBarForm {
     display: flex;
     color: var(--background-color);
+
+    & > * {
+        width: 20%;
+        margin: 1em;
+    }
 }
 
 .searchResult {
