@@ -3,61 +3,85 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-    // Create some locations
+
+    // Create locations
     const location1 = await prisma.location.create({
         data: {
             city: 'Paris',
-            country: 'France',
+            planet: 'Earth',
         },
     });
 
     const location2 = await prisma.location.create({
         data: {
             city: 'New York',
-            country: 'USA',
+            planet: 'Earth',
         },
     });
 
     const location3 = await prisma.location.create({
         data: {
-            city: 'Bastia',
-            country: 'Corsica',
+            city: 'New Paris',
+            planet: 'Mars',
         },
     });
 
     const location4 = await prisma.location.create({
         data: {
-            city: 'Sao Paulo',
-            country: 'Brazil',
+            city: 'New New Yor',
+            planet: 'Mars',
         },
     });
 
-    // Create some airline companies
+    // Create airline companies
     const airlineCompany1 = await prisma.airlineCompany.create({
         data: {
-            companyName: 'Air France',
+            companyName: 'Air Planet',
         },
     });
 
     const airlineCompany2 = await prisma.airlineCompany.create({
         data: {
-            companyName: 'Air Corsica',
+            companyName: 'Mars Attack',
         },
     });
 
-    // Create some airports (not part of your schema but referenced in the seed)
-    const airport1 = 'Charles de Gaulle Airport';
-    const airport2 = 'JFK International Airport';
-    const airport3 = 'Bastia Airport';
-    const airport4 = 'São Paulo/Guarulhos–Governador André Franco Montoro International Airport';
+    // Create airports
+    const airport1 = await prisma.airport.create({
+        data: {
+            airportName: 'Earth Aerobase',
+            locationId: location1.id,
+        },
+    });
+
+    const airport2 = await prisma.airport.create({
+        data: {
+            airportName: 'Mars Aerobase',
+            locationId: location2.id,
+        },
+    });
+
+    const airport3 = await prisma.airport.create({
+        data: {
+            airportName: 'Jupiter Port',
+            locationId: location3.id,
+        },
+    });
+
+    const airport4 = await prisma.airport.create({
+        data: {
+            airportName: 'Uranus Station',
+            locationId: location4.id,
+        },
+    });
 
     // Create flights
     const flight1 = await prisma.flight.create({
         data: {
             bookingOpenStatus: true,
             flightStatus: true,
-            departureAirport: airport1,
-            arrivalAirport: airport2,
+            departureAirportId: airport1.id,
+            arrivalAirportId: airport2.id,
             departureDate: new Date('2024-12-15T10:00:00Z'),
             arrivalDate: new Date('2024-12-15T18:00:00Z'),
             airlineCompanyId: airlineCompany1.id,
@@ -68,8 +92,8 @@ async function main() {
         data: {
             bookingOpenStatus: true,
             flightStatus: false,
-            departureAirport: airport3,
-            arrivalAirport: airport4,
+            departureAirportId: airport3.id,
+            arrivalAirportId: airport4.id,
             departureDate: new Date('2025-01-15T10:00:00Z'),
             arrivalDate: new Date('2025-01-15T18:00:00Z'),
             airlineCompanyId: airlineCompany2.id,

@@ -31,14 +31,16 @@ model Flight {
   id                String         @id @default(auto()) @map("_id") @db.ObjectId
   bookingOpenStatus Boolean
   flightStatus      Boolean        @default(true)
-  departureAirport  String
-  arrivalAirport    String
+  departureAirport  Airport        @relation("DepartureAirport", fields: [departureAirportId], references: [id])
+  arrivalAirport    Airport        @relation("ArrivalAirport", fields: [arrivalAirportId], references: [id])
   departureDate     DateTime
   arrivalDate       DateTime
   airlineCompany    AirlineCompany @relation(fields: [airlineCompanyId], references: [id])
   stopovers         Stopover[]
-  Booking           Booking[]
+  booking           Booking[]
   airlineCompanyId  String         @db.ObjectId
+  departureAirportId String        @db.ObjectId
+  arrivalAirportId   String        @db.ObjectId
 }
 
 model Passenger {
@@ -63,14 +65,24 @@ model Stopover {
 model Location {
   id       String     @id @default(auto()) @map("_id") @db.ObjectId
   city     String
-  country  String
+  planet  String
   Stopover Stopover[]
+  Airport Airport[]
 }
 
 model AirlineCompany {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   companyName String
   Flight      Flight[]
+}
+
+model Airport {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  airportName String
+  location Location @relation(fields: [locationId], references: [id])
+  locationId String @db.ObjectId
+  departures  Flight[] @relation("DepartureAirport")
+  arrivals    Flight[] @relation("ArrivalAirport")
 }
 
 enum Role {
