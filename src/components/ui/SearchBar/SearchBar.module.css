@@ -3,13 +3,22 @@
     color: var(--background-color);
 
     & > * {
-        width: 20%;
+        width: 15%;
         margin: 1em;
     }
 }
 
 .searchResult {
-    & > * {
+
+    .searchListItem {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 2em;
+
+        .searchListItemInfo {
+            display: flex;
+            gap: 1em;
+        }
     }
 }

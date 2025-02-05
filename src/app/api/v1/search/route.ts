@@ -4,11 +4,14 @@ import {NextRequest, NextResponse} from 'next/server';
 const prisma = new PrismaClient();
 
 export async function GET(req: NextRequest) {
+
     try {
         const departure = req.nextUrl.searchParams.get("departure");
         const arrival = req.nextUrl.searchParams.get("arrival");
         const departureDate = req.nextUrl.searchParams.get("departureDate");
         const arrivalDate = req.nextUrl.searchParams.get("arrivalDate");
+        const page = Number(req.nextUrl.searchParams.get("page")) || 1;
+        const pageSize = 10;
 
         const where: any = {};
 
@@ -19,7 +22,8 @@ export async function GET(req: NextRequest) {
 
         const flights = await prisma.flight.findMany({
             where,
-            take: 10,
+            take: pageSize,
+            skip: (page - 1) * pageSize,
             include: {
                 departureAirport: {
                     include: {

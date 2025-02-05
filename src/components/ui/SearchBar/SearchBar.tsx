@@ -2,15 +2,16 @@
 import {useFetchData} from "@/hooks/useFetchData";
 import {useState} from "react";
 import styles from "@/components/ui/SearchBar/SearchBar.module.css";
-import {Input} from "@chakra-ui/react";
+import {Button, Input} from "@chakra-ui/react";
 import {Flight} from "@prisma/client";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Link from "next/link";
 
 export const SearchBar = () => {
-    const url1 = `${process.env.NEXT_PUBLIC_API_URL}/api/${process.env.NEXT_PUBLIC_API_VERSION}/Flight`;
-    const queryKey1 = ['flights'];
-    const {data, isLoading, isError} = useFetchData(url1, queryKey1);
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/api/${process.env.NEXT_PUBLIC_API_VERSION}/search`;
+    const queryKey = ['flights'];
+    const {data, isLoading, isError} = useFetchData(url, queryKey);
 
     const [departure, setDeparture] = useState("");
     const [arrival, setArrival] = useState("");
@@ -41,8 +42,8 @@ export const SearchBar = () => {
         };
 
         return (
-            (departure ? flight.departureAirport.toLowerCase().includes(departure.toLowerCase()) : true) &&
-            (arrival ? flight.arrivalAirport.toLowerCase().includes(arrival.toLowerCase()) : true) &&
+            (departure ? flight.departureAirport.airportName.toLowerCase().includes(departure.toLowerCase()) : true) &&
+            (arrival ? flight.arrivalAirport.airportName.toLowerCase().includes(arrival.toLowerCase()) : true) &&
             (departureDate ? isSameDate(flightDepartureDate, departureDate) : true) &&
             (arrivalDate ? isSameDate(flightArrivalDate, arrivalDate) : true)
         );
@@ -88,11 +89,14 @@ export const SearchBar = () => {
                 <ul className={styles.searchResult}>
                     {filteredActiveFlights.length > 0 ? (
                         filteredActiveFlights.map((flight: Flight) => (
-                            <li key={flight.id}>
-                                <p>Departure airport {flight.departureAirport}</p>
-                                <p>Arrival airport {flight.arrivalAirport}</p>
-                                <p>Departure date {new Date(flight.departureDate).toLocaleString()}</p>
-                                <p>Arrival date {new Date(flight.arrivalDate).toLocaleString()}</p>
+                            <li key={flight.id} className={styles.searchListItem}>
+                                <div className={styles.searchListItemInfo}>
+                                    <p>Departure airport : {flight.departureAirport.airportName}</p>
+                                    <p>Arrival airport : {flight.arrivalAirport.airportName}</p>
+                                    <p>Departure date : {new Date(flight.departureDate).toLocaleString()}</p>
+                                    <p>Arrival date : {new Date(flight.arrivalDate).toLocaleString()}</p>
+                                </div>
+                                <Link href={`/booking/${flight.id}`}><Button colorPalette={"orange"}>Book this flight</Button></Link>
                             </li>
                         ))
                     ) : (
