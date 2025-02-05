@@ -19,6 +19,7 @@ export async function GET(req: NextRequest) {
 
         const flights = await prisma.flight.findMany({
             where,
+            take: 10,
             include: {
                 departureAirport: {
                     include: {
