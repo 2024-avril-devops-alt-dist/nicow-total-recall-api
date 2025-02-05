@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
 
         const where: any = {};
 
-        if (departure) where.departureAirportId = departure;
+        if (departure) where.departureAirport = departure;
         if (arrival) where.arrivalAirportId = arrival;
         if (departureDate) where.departureDate = new Date(departureDate);
         if (arrivalDate) where.arrivalDate = new Date(arrivalDate);
