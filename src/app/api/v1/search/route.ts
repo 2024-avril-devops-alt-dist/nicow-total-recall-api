@@ -21,7 +21,13 @@ export async function GET(req: NextRequest) {
 
         if (departureAirport) where.departureAirportId = departureAirport;
         if (arrivalAirport) where.arrivalAirportId = arrivalAirport;
-        if (departureDate) where.departureDate = new Date(departureDate);
+        if (departureDate) {
+            const parsedDate = new Date(departureDate);
+            where.departureDate = {
+                gte: new Date(parsedDate.setHours(0, 0, 0, 0)),  // Début de la journée
+                lt: new Date(parsedDate.setHours(23, 59, 59, 999)) // Fin de la journée
+            };
+        }
         if (arrivalDate) where.arrivalDate = new Date(arrivalDate);
 
         const flights = await prisma.flight.findMany({

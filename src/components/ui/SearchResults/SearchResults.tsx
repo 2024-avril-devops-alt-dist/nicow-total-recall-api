@@ -1,6 +1,6 @@
 "use client";
 import {useFetchData} from "@/hooks/useFetchData";
-import styles from "@/components/ui/SearchBar/SearchBar.module.css";
+import styles from "@/components/ui/SearchResults/SearchResults.module.css";
 import {Button} from "@chakra-ui/react";
 import {Flight} from "@prisma/client";
 import "react-datepicker/dist/react-datepicker.css";
