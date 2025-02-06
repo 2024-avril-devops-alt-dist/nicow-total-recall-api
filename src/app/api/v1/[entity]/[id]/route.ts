@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import {isAuthenticated, isSetDatabase} from "@/utils/model";
+import {isAuthenticated, isSetDatabase} from "@/utils/ModelUtils";
 import {
     prismaDelete,
     prismaFindById,
     prismaUpdate,
     validateEntity,
-} from "@/services/query";
+} from "@/services/QueryService";
 
 /**
  * Get entity with [id] in database.

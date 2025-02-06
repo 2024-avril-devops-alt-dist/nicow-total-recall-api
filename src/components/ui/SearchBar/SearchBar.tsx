@@ -7,11 +7,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import {useRouter, useSearchParams} from "next/navigation";
 
 export const SearchBar = () => {
+
     const searchParams = useSearchParams();
     const router = useRouter();
 
-    const [departure, setDeparture] = useState(searchParams.get("departure") || "");
-    const [arrival, setArrival] = useState(searchParams.get("arrival") || "");
+    const [departure, setDeparture] = useState(searchParams.get("departureAirport") || "");
+    const [arrival, setArrival] = useState(searchParams.get("arrivalAirport") || "");
     const [departureDate, setDepartureDate] = useState(
         searchParams.get("departureDate") ? new Date(searchParams.get("departureDate")!) : null
     );
@@ -21,8 +22,8 @@ export const SearchBar = () => {
 
     // Change values on state when searchParams change
     useEffect(() => {
-        setDeparture(searchParams.get("departure") || "");
-        setArrival(searchParams.get("arrival") || "");
+        setDeparture(searchParams.get("departureAirport") || "");
+        setArrival(searchParams.get("arrivalAirport") || "");
         setDepartureDate(searchParams.get("departureDate") ? new Date(searchParams.get("departureDate")!) : null);
         setArrivalDate(searchParams.get("arrivalDate") ? new Date(searchParams.get("arrivalDate")!) : null);
     }, [searchParams]);
@@ -31,10 +32,10 @@ export const SearchBar = () => {
     const handleSearch = () => {
         const params = new URLSearchParams();
 
-        if (departure) params.append("departure", departure);
-        if (arrival) params.append("arrival", arrival);
-        if (departureDate) params.append("departureDate", departureDate.toISOString());
-        if (arrivalDate) params.append("arrivalDate", arrivalDate.toISOString());
+        if (departure) params.append("departureAirport", departure);
+        if (arrival) params.append("arrivalAirport", arrival);
+        if (departureDate) params.append("departureDate", departureDate.toISOString().split("T")[0]);
+        if (arrivalDate) params.append("arrivalDate", arrivalDate.toISOString().split("T")[0]);
 
         router.push(`/search/open-flights?${params.toString()}`);
     };
@@ -43,13 +44,13 @@ export const SearchBar = () => {
             <div>
                 <form className={styles.searchBarForm} onSubmit={(e) => e.preventDefault()}>
                     <Input
-                        placeholder="Departure"
+                        placeholder="Departure airport"
                         variant="subtle"
                         value={departure}
                         onChange={(e) => setDeparture(e.target.value)}
                     />
                     <Input
-                        placeholder="Arrival"
+                        placeholder="Arrival airport"
                         variant="subtle"
                         value={arrival}
                         onChange={(e) => setArrival(e.target.value)}

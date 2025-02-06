@@ -1,6 +1,5 @@
 "use client";
 import {useFetchData} from "@/hooks/useFetchData";
-import {useState} from "react";
 import styles from "@/components/ui/SearchBar/SearchBar.module.css";
 import {Button} from "@chakra-ui/react";
 import {Flight} from "@prisma/client";
@@ -22,10 +21,6 @@ export const SearchResults = () => {
     if (isError) {
         return <div>Error occurred while fetching data.</div>;
     }
-
-    console.log(data);
-
-
 
     return (
             <div>

@@ -6,17 +6,21 @@ const prisma = new PrismaClient();
 export async function GET(req: NextRequest) {
 
     try {
-        const departure = req.nextUrl.searchParams.get("departure");
-        const arrival = req.nextUrl.searchParams.get("arrival");
+        const departureAirport = req.nextUrl.searchParams.get("departureAirport");
+        const arrivalAirport = req.nextUrl.searchParams.get("arrivalAirport");
         const departureDate = req.nextUrl.searchParams.get("departureDate");
         const arrivalDate = req.nextUrl.searchParams.get("arrivalDate");
         const page = Number(req.nextUrl.searchParams.get("page")) || 1;
         const pageSize = 10;
+        console.log(departureAirport);
+        console.log(arrivalAirport);
+        console.log(departureDate);
+        console.log(arrivalDate)
 
         const where: any = {};
 
-        if (departure) where.departureAirport = departure;
-        if (arrival) where.arrivalAirportId = arrival;
+        if (departureAirport) where.departureAirportId = departureAirport;
+        if (arrivalAirport) where.arrivalAirportId = arrivalAirport;
         if (departureDate) where.departureDate = new Date(departureDate);
         if (arrivalDate) where.arrivalDate = new Date(arrivalDate);
 
