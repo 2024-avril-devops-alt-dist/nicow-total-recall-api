@@ -1,9 +1,10 @@
-import {AppBar} from "@/components/auth/AppBar/AppBar";
 import styles from '@/components/layout/Nav/Nav.module.css';
 import Link from "next/link";
 import Image from "next/image";
+import {AppBar} from "@/components/auth/AppBar/AppBar";
 
 export function Nav () {
+
     return (
         <nav className={styles.nav}>
             <ul className={styles.navList}>
@@ -19,8 +20,7 @@ export function Nav () {
                 />
                 </Link></li>
                 <li className={styles.itemList}><Link href={"/swagger"}>API</Link></li>
-                <li className={styles.itemList}>Bonjour</li>
-                {/*<li className={styles.itemList}><AppBar /></li>*/}
+                <li className={styles.itemList}><AppBar /></li>
             </ul>
         </nav>
     )

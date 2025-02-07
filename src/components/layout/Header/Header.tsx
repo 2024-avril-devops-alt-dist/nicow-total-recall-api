@@ -1,11 +1,10 @@
-"use client";
-import { usePathname } from "next/navigation";
 import { Nav } from "@/components/layout/Nav/Nav";
 import styles from "@/components/layout/Header/Header.module.css";
+import {headers} from "next/headers";
 
 export function Header() {
-    const pathname = usePathname();
-    const isHomePage = pathname === "/";
+    const headersList = headers() as Headers;
+    const isHomePage = headersList.get("X-Is-Home") === "true";
 
     return (
         <header className={isHomePage ? styles.headerHome : styles.header}>

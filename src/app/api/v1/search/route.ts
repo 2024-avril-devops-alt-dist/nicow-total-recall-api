@@ -24,8 +24,8 @@ export async function GET(req: NextRequest) {
         if (departureDate) {
             const parsedDate = new Date(departureDate);
             where.departureDate = {
-                gte: new Date(parsedDate.setHours(0, 0, 0, 0)),  // Début de la journée
-                lt: new Date(parsedDate.setHours(23, 59, 59, 999)) // Fin de la journée
+                gte: new Date(parsedDate.setHours(0, 0, 0, 0)),  // Start of the day
+                lt: new Date(parsedDate.setHours(23, 59, 59, 999)) // End of the day
             };
         }
         if (arrivalDate) where.arrivalDate = new Date(arrivalDate);
