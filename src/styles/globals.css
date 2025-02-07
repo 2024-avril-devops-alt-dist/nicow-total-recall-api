@@ -1,5 +1,5 @@
 :root {
-    --nav-background-color: rgba(242, 78, 30, 0.5);
+    --nav-background-color: rgba(242, 78, 30, 0.7);
     --nav-text-color: #F0F1F6;
     --header-background-color: #F24E1E;
     --taxonomy-background-color: #F24E1E;
@@ -32,6 +32,7 @@ body {
     background-color: var(--background-color);
 }
 .content {
-    min-height: 75vh;
+    padding-top: var(--nav-height);
+    min-height: 90vh;
     color: var(--nav-text-color);
 }
