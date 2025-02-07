@@ -1,14 +1,22 @@
 .searchResult {
 
     .searchListItem {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
         align-items: center;
-        justify-content: space-between;
-        padding: 2em;
+        gap: 1em;
+        margin: 2em;
+        padding: 1em;
+        color: var(--background-color);
+        background-color: var(--nav-text-color);
+        border-radius: 0.2em;
 
-        .searchListItemInfo {
+        & > * {
             display: flex;
-            gap: 1em;
+
+            &:last-child {
+                justify-content: center;
+            }
         }
     }
 }

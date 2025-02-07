@@ -28,12 +28,10 @@ export const SearchResults = () => {
                     {data.length > 0 ? (
                         data.map((flight: Flight) => (
                             <li key={flight.id} className={styles.searchListItem}>
-                                <div className={styles.searchListItemInfo}>
                                     <p>Departure airport : {flight.departureAirport.airportName}</p>
                                     <p>Arrival airport : {flight.arrivalAirport.airportName}</p>
                                     <p>Departure date : {new Date(flight.departureDate).toLocaleString()}</p>
                                     <p>Arrival date : {new Date(flight.arrivalDate).toLocaleString()}</p>
-                                </div>
                                 <Link href={`/booking/${flight.id}`}><Button colorPalette={"orange"}>Book this flight</Button></Link>
                             </li>
                         ))
