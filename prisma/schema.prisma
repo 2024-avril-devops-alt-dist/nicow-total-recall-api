@@ -10,6 +10,8 @@ generator client {
 model User {
   id                String    @id @default(auto()) @map("_id") @db.ObjectId
   email             String    @unique
+  name              String    @default("")
+  image             String    @default("")
   phoneNumber       String    @default("") @db.String
   phoneNotification Boolean   @default(false)
   role              Role      @default(USER)
@@ -28,19 +30,19 @@ model Booking {
 }
 
 model Flight {
-  id                String         @id @default(auto()) @map("_id") @db.ObjectId
-  bookingOpenStatus Boolean
-  flightStatus      Boolean        @default(true)
-  departureAirport  Airport        @relation("DepartureAirport", fields: [departureAirportId], references: [id])
-  arrivalAirport    Airport        @relation("ArrivalAirport", fields: [arrivalAirportId], references: [id])
-  departureDate     DateTime
-  arrivalDate       DateTime
-  airlineCompany    AirlineCompany @relation(fields: [airlineCompanyId], references: [id])
-  stopovers         Stopover[]
-  booking           Booking[]
-  airlineCompanyId  String         @db.ObjectId
-  departureAirportId String        @db.ObjectId
-  arrivalAirportId   String        @db.ObjectId
+  id                 String         @id @default(auto()) @map("_id") @db.ObjectId
+  bookingOpenStatus  Boolean
+  flightStatus       Boolean        @default(true)
+  departureAirport   Airport        @relation("DepartureAirport", fields: [departureAirportId], references: [id])
+  arrivalAirport     Airport        @relation("ArrivalAirport", fields: [arrivalAirportId], references: [id])
+  departureDate      DateTime
+  arrivalDate        DateTime
+  airlineCompany     AirlineCompany @relation(fields: [airlineCompanyId], references: [id])
+  stopovers          Stopover[]
+  booking            Booking[]
+  airlineCompanyId   String         @db.ObjectId
+  departureAirportId String         @db.ObjectId
+  arrivalAirportId   String         @db.ObjectId
 }
 
 model Passenger {
@@ -65,9 +67,9 @@ model Stopover {
 model Location {
   id       String     @id @default(auto()) @map("_id") @db.ObjectId
   city     String
-  planet  String
+  planet   String
   Stopover Stopover[]
-  Airport Airport[]
+  Airport  Airport[]
 }
 
 model AirlineCompany {
@@ -77,10 +79,10 @@ model AirlineCompany {
 }
 
 model Airport {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   airportName String
-  location Location @relation(fields: [locationId], references: [id])
-  locationId String @db.ObjectId
+  location    Location @relation(fields: [locationId], references: [id])
+  locationId  String   @db.ObjectId
   departures  Flight[] @relation("DepartureAirport")
   arrivals    Flight[] @relation("ArrivalAirport")
 }

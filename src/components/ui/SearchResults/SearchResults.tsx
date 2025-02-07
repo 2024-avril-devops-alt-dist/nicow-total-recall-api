@@ -5,7 +5,7 @@ import {Button} from "@chakra-ui/react";
 import {Flight} from "@prisma/client";
 import "react-datepicker/dist/react-datepicker.css";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import {useSearchParams} from "next/navigation";
 
 export const SearchResults = () => {
     const searchParams = useSearchParams();
@@ -23,22 +23,23 @@ export const SearchResults = () => {
     }
 
     return (
-            <div>
-                <ul className={styles.searchResult}>
-                    {data.length > 0 ? (
-                        data.map((flight: Flight) => (
-                            <li key={flight.id} className={styles.searchListItem}>
-                                    <p>Departure airport : {flight.departureAirport.airportName}</p>
-                                    <p>Arrival airport : {flight.arrivalAirport.airportName}</p>
-                                    <p>Departure date : {new Date(flight.departureDate).toLocaleString()}</p>
-                                    <p>Arrival date : {new Date(flight.arrivalDate).toLocaleString()}</p>
-                                <Link href={`/booking/${flight.id}`}><Button colorPalette={"orange"}>Book this flight</Button></Link>
-                            </li>
-                        ))
-                    ) : (
-                        <p>No flight found for your research.</p>
-                    )}
-                </ul>
-            </div>
+        <div>
+            <ul className={styles.searchResult}>
+                {data.length > 0 ? (
+                    data.map((flight: Flight) => (
+                        <li key={flight.id} className={styles.searchListItem}>
+                            <p>Departure airport : {flight.departureAirport.airportName}</p>
+                            <p>Arrival airport : {flight.arrivalAirport.airportName}</p>
+                            <p>Departure date : {new Date(flight.departureDate).toLocaleString()}</p>
+                            <p>Arrival date : {new Date(flight.arrivalDate).toLocaleString()}</p>
+                            <Link href={`/booking/${flight.id}`}><Button colorPalette={"orange"}>Book this
+                                flight</Button></Link>
+                        </li>
+                    ))
+                ) : (
+                    <p>No flight found for your research.</p>
+                )}
+            </ul>
+        </div>
     )
 }

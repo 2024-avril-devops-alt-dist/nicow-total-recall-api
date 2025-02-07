@@ -1,6 +1,8 @@
-export default function BookingPassengers(){
+import { auth } from "@/auth"
+export default async function BookingPassengers(){
 
-
-
-    return 'Nique JS'
+        const session = await auth()
+        if (session?.user) {
+                console.log(session.user);
+        }
 }

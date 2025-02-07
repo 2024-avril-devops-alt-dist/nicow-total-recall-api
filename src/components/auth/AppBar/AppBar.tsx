@@ -12,7 +12,7 @@ export async function AppBar() {
                 <p>Welcome {session.user.name}</p>
                 <form action={async() => {
                     "use server"
-                    await signOut();
+                    await signOut({redirectTo:"/"});
                 }}>
                     <button type="submit">
                         <Image

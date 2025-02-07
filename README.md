@@ -65,7 +65,7 @@ If I have enough time, I will add pipelines documentation here.
 - Dockerize with Dockerfile & docker-compose.yml
 - - Dockerfile needs install of prisma globally in it
 - - Dockerfile needs prisma generate
-- `npm i prisma typescript ts-node @types/node zod esbuild next-auth@beta swagger-ui-react @types/swagger-ui-react next-swagger-doc --save-dev`
+- `npm i prisma typescript ts-node @types/node esbuild next-auth@beta swagger-ui-react @types/swagger-ui-react next-swagger-doc --save-dev`
 - Put this in script (see more [here](https://github.com/prisma/prisma/issues/7053)) : 
 ```json
 {
@@ -88,6 +88,7 @@ If I have enough time, I will add pipelines documentation here.
 - React Admin (back office)
 - Chakra
 - React Date Picker
+- Zod
 
 ## Links
 
@@ -95,3 +96,5 @@ If I have enough time, I will add pipelines documentation here.
 - [API route](https://corbado.com/blog/nextjs-prisma)
 - [Doc Prisma for queries](https://www.prisma.io/docs/orm/prisma-client/queries/filtering-and-sorting)
 - [Auth.js](https://www.youtube.com/watch?v=Rs8018RO5YQ)
+- [Extending Auth.js session](https://authjs.dev/guides/extending-the-session)
+- [Middleware](https://nextjs.org/docs/app/building-your-application/routing/middleware)
