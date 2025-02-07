@@ -11,7 +11,10 @@ export function Footer() {
             {isHomePage ?
                 '' :
                 <footer className={styles.footer}>
-                    <p>Ceci est le footer. Tout droit réservés.</p>
+                    <p>Ce n'est pas une défaillance de votre ordinateur.</p>
+                    <p>N'essayez pas de régler l'image.</p>
+                    <p>Nous maîtrisons toute la transmission.</p>
+                    <p>Nous contrôlons les horizontales et les verticales.</p>
                 </footer>
             }
 
